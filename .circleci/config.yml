@@ -1,9 +1,10 @@
-version: 2.1
+version: 2
+jobs:
+  build:
 
-orbs:
-  maven: circleci/maven@0.0.12
+  docker:
+  - image: circleci/openjdk:11.0.1-jdk
 
-workflows:
-  maven_test:
-    jobs:
-      - maven/test # checkout, build, test, and upload test results
+  steps:
+  - checkout
+  - run: ./mvnw clean install
